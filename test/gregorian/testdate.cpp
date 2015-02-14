@@ -17,7 +17,7 @@ void test_yearlimit(int yr, bool allowed)
     sdesc << "should" << (allowed ? "" : " not") << " be able to make a date in year " << yr;
 
     try {
-        boost::gregorian::date chkyr(yr, 1, 1);
+        boost::gregorian::date chkyr(static_cast<unsigned short>(yr), 1, 1);
         check(sdesc.str(), allowed);
     }
     catch (std::out_of_range&) { check(sdesc.str(), !allowed); }
