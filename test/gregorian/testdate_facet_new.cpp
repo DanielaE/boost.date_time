@@ -346,12 +346,12 @@ int main() {
 
   // greg_month tests
   {
-    for(int i = 0; i < 12; ++i) {
+    for(unsigned short i = 0; i < 12; ++i) {
       greg_month m(i+1); // month numbers 1-12
       teststreaming("greg_month short", m, short_months[i], loc);
     }
     small_types_facet->month_format(L"%B"); // full name
-    for(int i = 0; i < 12; ++i) {
+    for(unsigned short i = 0; i < 12; ++i) {
       greg_month m(i+1); // month numbers 1-12
       teststreaming("greg_month full", m, full_months[i], loc);
     }
@@ -359,12 +359,12 @@ int main() {
 
   // greg_weekday tests
   {
-    for(int i = 0; i < 7; ++i) {
+    for(unsigned short i = 0; i < 7; ++i) {
       greg_weekday gw(i); // weekday numbers 0-6
       teststreaming("greg_weekday short", gw, short_weekdays[i], loc);
     }
     small_types_facet->weekday_format(L"%A"); // full name
-    for(int i = 0; i < 7; ++i) {
+    for(unsigned short i = 0; i < 7; ++i) {
       greg_weekday gw(i); // weekday numbers 0-6
       teststreaming("greg_weekday full", gw, full_weekdays[i], loc);
     }
