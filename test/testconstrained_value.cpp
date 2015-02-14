@@ -1,14 +1,18 @@
 /* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
+ * Use, modification and distribution is subject to the
  * Boost Software License, Version 1.0. (See accompanying
  * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
+ * Author: Jeff Garland
  */
 
 #include "boost/config.hpp"
 #include "boost/date_time/constrained_value.hpp"
 #include "testfrmwk.hpp"
 #include <iostream>
+
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4702) // unreachable code
+#endif
 
 class bad_day {}; //exception type
 
@@ -38,7 +42,7 @@ int main()
   check("greater or equal ", cv2 >= cv1);
   //various running of the conversion operator
   std::cout << cv1 << std::endl;
-  unsigned int i = cv1; 
+  unsigned int i = cv1;
   check("test conversion", i == cv1);
 
 
