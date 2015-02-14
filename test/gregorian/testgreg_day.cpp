@@ -1,8 +1,8 @@
 /* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
+ * Use, modification and distribution is subject to the
  * Boost Software License, Version 1.0. (See accompanying
  * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland 
+ * Author: Jeff Garland
  */
 
 #include "boost/date_time/gregorian/greg_day.hpp"
@@ -11,9 +11,12 @@
 #include "../testfrmwk.hpp"
 #include <iostream>
 
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4702) // unreachable code
+#endif
 
-void 
-test_day() 
+void
+test_day()
 {
   using namespace boost::gregorian;
   greg_day d1(1);
@@ -26,7 +29,7 @@ test_day()
   }
   catch(std::exception &) {
     check("Bad day creation", true); //good
-    
+
   }
   try {
     greg_day bad(32);
@@ -36,7 +39,7 @@ test_day()
   }
   catch(std::exception&) {
     check("Bad day creation2", true); //good
-    
+
   }
   check("traits min day", (greg_day::min)() == 1);
   check("traits max day", (greg_day::max)() == 31);
@@ -44,19 +47,19 @@ test_day()
   greg_weekday sunday(0);
   greg_weekday monday(1);
 
-  check("Weekday 0 short name == Sun", 
+  check("Weekday 0 short name == Sun",
         sunday.as_short_string() == std::string("Sun"));
-  check("Weekday 1 short name == Mon", 
+  check("Weekday 1 short name == Mon",
         monday.as_short_string() == std::string("Mon"));
-  check("Weekday 2 short name == Tue", 
+  check("Weekday 2 short name == Tue",
         greg_weekday(2).as_short_string() == std::string("Tue"));
-  check("Weekday 3 short name == Wed", 
+  check("Weekday 3 short name == Wed",
         greg_weekday(3).as_short_string() == std::string("Wed"));
-  check("Weekday 4 short name == Thu", 
+  check("Weekday 4 short name == Thu",
         greg_weekday(4).as_short_string() == std::string("Thu"));
-  check("Weekday 5 short name == Fri", 
+  check("Weekday 5 short name == Fri",
         greg_weekday(5).as_short_string() == std::string("Fri"));
-  check("Weekday 6 short name == Sat", 
+  check("Weekday 6 short name == Sat",
         greg_weekday(6).as_short_string() == std::string("Sat"));
   try {
     greg_weekday bad(7);
@@ -66,7 +69,7 @@ test_day()
   }
   catch(bad_weekday&) {
     check("Bad weekday creation", true); //good
-    
+
   }
 
    try {
@@ -79,11 +82,11 @@ test_day()
    catch(bad_day_of_year&) {
      check("Bad day of year", true); //good
   }
-  
+
 }
 
 int
-main() 
+main()
 {
   test_day();
   return printTestStats();

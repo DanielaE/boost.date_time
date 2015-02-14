@@ -16,7 +16,7 @@ void test_yearlimit(int yr, bool allowed)
     sdesc << "should" << (allowed ? "" : " not") << " be able to make a year " << yr;
 
     try {
-        boost::gregorian::greg_year chkyr(yr);
+        boost::gregorian::greg_year chkyr(static_cast<unsigned short>(yr));
         check(sdesc.str(), allowed);
         if (allowed) {
             check_equal("year operator ==", chkyr, yr);

@@ -14,6 +14,11 @@
 #include <string>
 #include <boost/config.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(push)
+# pragma warning(disable: 4389) // signed/unsigned mismatch
+#endif
+
 //! Really simple test framework for counting and printing
 class TestStats
 {
@@ -109,5 +114,9 @@ inline int printTestStats()
   stat.print();
   return stat.testcount() - stat.passcount();
 }
+
+#ifdef BOOST_MSVC
+# pragma warning(pop)
+#endif
 
 #endif
