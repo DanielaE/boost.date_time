@@ -16,6 +16,11 @@
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 
+#ifdef BOOST_MSVC
+# pragma warning(push)
+# pragma warning(disable: 4702) // unreachable code
+#endif
+
 namespace boost {
 
 //! Namespace containing constrained_value template and types
@@ -115,7 +120,8 @@ namespace CV {
 
 } } //namespace CV
 
-
-
+#ifdef BOOST_MSVC
+# pragma warning(pop)
+#endif
 
 #endif
